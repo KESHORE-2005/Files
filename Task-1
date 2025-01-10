@@ -1,0 +1,28 @@
+import requests
+import matplotlib.pyplot as plt
+
+url = "https://disease.sh/v3/covid-19/historical/all?lastdays=10"
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+else:
+    print("Failed to fetch data")
+    exit()
+
+dates = list(data['cases'].keys())
+cases = list(data['cases'].values())
+
+plt.figure(figsize=(8, 5))
+plt.plot(dates, cases, marker='o', color='blue', label='Cases')
+
+plt.title('COVID-19 Cases Over Last 10 Days', fontsize=14)
+plt.xlabel('Date', fontsize=12)
+plt.ylabel('Number of Cases', fontsize=12)
+plt.xticks(rotation=45)
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+plt.show()
+#Output for the task-1
