@@ -48,5 +48,6 @@ if __name__ == "__main__":
 else:
   data = read_data(input_file)
   summary = analyze_data(data)
- generate_pdf_report(summary, output_file)
-#Output for the task-2
+  generate_pdf_report(summary, output_file)
+#Output of the task-2
+
